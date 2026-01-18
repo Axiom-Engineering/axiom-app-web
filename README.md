@@ -1,75 +1,68 @@
-# React + TypeScript + Vite
+# Axiom App Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, high-performance web application built with [React](https://react.dev/), [TypeScript](https://www.typescriptlang.org/), and [Vite](https://vitejs.dev/).
 
-Currently, two official plugins are available:
+## 🚀 Technlogy Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project leverages a robust modern stack to ensure performance, scalability, and developer experience:
 
-## React Compiler
+-   **Core**: React 19, TypeScript
+-   **Build Tool**: Vite 6 (Fast HMR & Bundling)
+-   **Styling**:
+    -   [Tailwind CSS v4](https://tailwindcss.com/) (Utility-first CSS)
+    -   [Material UI (MUI)](https://mui.com/) (Component Library)
+    -   [Emotion](https://emotion.sh/) (CSS-in-JS)
+-   **State Management**: [Redux Toolkit](https://redux-toolkit.js.org/)
+-   **Animations**: [Framer Motion](https://www.framer.com/motion/)
+-   **Linting**: ESLint with React Compiler support
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## 📂 Project Structure
 
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+The project follows a feature-based architecture pattern:
+```
+src/
+├── features/        # Feature-specific code
+│   ├── admin-console/
+│   └── workspace/
+├── theme/           # Theme configuration and design tokens
+├── assets/          # Static assets
+└── App.tsx          # Main application entry
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Ensure you have Node.js installed on your machine.
+
+### Installation
+
+1.  Clone the repository:
+    ```bash
+    git clone <repository-url>
+    cd axiom-app-web
+    ```
+
+2.  Install dependencies:
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+
+### Running Locally
+
+Start the development server:
+
+```bash
+npm run dev
 ```
+
+The application will be available at `http://localhost:5173` (or the port shown in your terminal).
+
+## 📜 Scripts
+
+-   `npm run dev`: Starts the Vite development server.
+-   `npm run build`: Type-checks and builds the project for production.
+-   `npm run preview`: Preview the production build locally.
+-   `npm run lint`: Runs ESLint to check for code quality issues.
