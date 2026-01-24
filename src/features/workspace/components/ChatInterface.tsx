@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Paper, TextField, IconButton, Typography } from '@mui/material';
-import { Send, Notifications, AccountCircle, Add } from '@mui/icons-material';
+import { Send, Notifications, AccountCircle } from '@mui/icons-material';
 import { colors } from '../../../theme/colors';
 import { MessageBubble } from './MessageBubble';
 import { CHAT_MESSAGES } from '../data/mockData';
@@ -90,9 +90,7 @@ export const ChatInterface = () => {
                         mx: 'auto'
                     }}
                 >
-                    <IconButton sx={{ p: '10px', color: colors.text.secondary }} aria-label="add">
-                        <Add sx={{ transform: 'rotate(45deg)' }} />
-                    </IconButton>
+
 
                     <TextField
                         sx={{ flex: 1 }}

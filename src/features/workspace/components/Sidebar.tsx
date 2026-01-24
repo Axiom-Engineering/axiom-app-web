@@ -83,7 +83,7 @@ export const Sidebar = () => {
                                             borderRadius: 2,
                                             mx: 1,
                                             bgcolor: item.isActive ? 'rgba(59, 130, 246, 0.1) !important' : 'transparent',
-                                            borderLeft: item.isActive ? `3px solid ${colors.primary.blue}` : '3px solid transparent',
+
                                             '&:hover': {
                                                 bgcolor: 'rgba(255, 255, 255, 0.05)',
                                             },
