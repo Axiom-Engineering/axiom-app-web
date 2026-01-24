@@ -1,103 +1,116 @@
+/**
+ * Axiom Design System - Color Palette
+ * High-end, modern dark theme optimized for Enterprise AI Dashboard
+ */
+
 export const colors = {
-    // Primary Accent
+    // Brand & Primary
     primary: {
-        blue: '#3B82F6', // Enterprise Blue - Main action color
+        blue: '#2563EB',      // Inter Blue
+        purple: '#7C3AED',    // Vivid Purple
+        cyan: '#0891B2',      // Cyan
+        gradient: 'linear-gradient(135deg, #2563EB 0%, #7C3AED 100%)',
+        hover: '#1D4ED8',
     },
 
-    // Dark Mode Surface Colors
+    // Background Surfaces
     surface: {
-        main: '#0F172A', // Deep navy-charcoal - Primary chat area background
-        sidebar: '#1E293B', // Lighter blue-gray - Sidebar/navigation background
-        card: '#334155', // Message bubbles and card surfaces
+        main: '#0F1117',      // Very dark blue/gray - Global background
+        sidebar: '#161920',   // Slightly lighter - Navigation
+        card: '#1E2330',      // Card background
+        paper: '#1F2433',     // Elevated surfaces
+        hover: '#2A3042',     // Hover state
+        glass: 'rgba(30, 35, 48, 0.70)', // Glassmorphism base
+        glassDark: 'rgba(15, 17, 23, 0.85)',
+        overlay: 'rgba(0, 0, 0, 0.7)',
     },
 
-    // Typography & Details
+    // Text & Content
     text: {
-        primary: '#F8FAFC', // Off-white/light-gray - Maximum readability
-        secondary: '#94A3B8', // Muted gray-blue - Timestamps, inactive text
+        primary: '#F3F4F6',   // Almost white (Gray 100)
+        secondary: '#9CA3AF', // Muted gray (Gray 400)
+        muted: '#6B7280',     // Darker gray (Gray 500)
+        accent: '#60A5FA',    // Light blue for links/accents
+        inverse: '#111827',   // Dark text for light backgrounds
     },
 
     // Borders & Dividers
     border: {
-        default: '#1E293B', // Subtle dark border for separation
+        default: '#2D3748',   // Standard border
+        subtle: '#1F2937',    // Subtle separator
+        highlight: '#3B82F6', // Focus states
+        glass: 'rgba(255, 255, 255, 0.08)', // For glass barriers
     },
+
+    // Status Indicators
+    status: {
+        success: '#10B981',
+        successBg: 'rgba(16, 185, 129, 0.15)',
+        warning: '#F59E0B',
+        warningBg: 'rgba(245, 158, 11, 0.15)',
+        error: '#EF4444',
+        errorBg: 'rgba(239, 68, 68, 0.15)',
+        info: '#3B82F6',
+        infoBg: 'rgba(59, 130, 246, 0.15)',
+    },
+
+    // Gradients & Effects
+    effects: {
+        glow: '0 0 20px rgba(37, 99, 235, 0.2)',
+        glowPurple: '0 0 20px rgba(124, 58, 237, 0.2)',
+        cardShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.15)',
+        elevatedShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2)',
+        backdropFilter: 'blur(12px)',
+    }
 } as const;
 
 /**
- * Semantic color mappings for specific UI elements
+ * Semantic color mappings
  */
 export const semanticColors = {
-    // Buttons
     button: {
         primary: colors.primary.blue,
-        primaryHover: '#2563EB', // Slightly darker blue for hover
-        primaryActive: '#1D4ED8', // Even darker for active state
+        primaryHover: colors.primary.hover,
+        secondary: colors.surface.card,
+        secondaryHover: colors.surface.hover,
     },
-
-    // Backgrounds
     background: {
         app: colors.surface.main,
         sidebar: colors.surface.sidebar,
-        message: colors.surface.card,
-        hover: '#475569', // Lighter surface for hover states
+        card: colors.surface.card,
+        modal: colors.surface.paper,
     },
-
-    // Text
     text: {
         primary: colors.text.primary,
         secondary: colors.text.secondary,
-        muted: '#64748B', // Even more muted for hints/placeholders
-        link: colors.primary.blue,
+        muted: colors.text.muted,
+        link: colors.text.accent,
     },
-
-    // Borders
     border: {
         default: colors.border.default,
         focus: colors.primary.blue,
-        subtle: '#2D3748', // Very subtle borders
-    },
-
-    // Status colors (optional, for future use)
-    status: {
-        success: '#10B981',
-        warning: '#F59E0B',
-        error: '#EF4444',
-        info: colors.primary.blue,
     },
 } as const;
 
-/**
- * Type-safe color accessor
- */
-export type ColorPalette = typeof colors;
-export type SemanticColors = typeof semanticColors;
-
-/**
- * Helper function to get color with opacity
- * @param color - Hex color code
- * @param opacity - Opacity value between 0 and 1
- * @returns RGBA color string
- */
+// Helper for opacity
 export const withOpacity = (color: string, opacity: number): string => {
     // Remove # if present
     const hex = color.replace('#', '');
 
-    // Parse hex to RGB
-    const r = parseInt(hex.substring(0, 2), 16);
-    const g = parseInt(hex.substring(2, 4), 16);
-    const b = parseInt(hex.substring(4, 6), 16);
+    // Handle short hex like #fff
+    let r, g, b;
+
+    if (hex.length === 3) {
+        r = parseInt(hex[0] + hex[0], 16);
+        g = parseInt(hex[1] + hex[1], 16);
+        b = parseInt(hex[2] + hex[2], 16);
+    } else {
+        r = parseInt(hex.substring(0, 2), 16);
+        g = parseInt(hex.substring(2, 4), 16);
+        b = parseInt(hex.substring(4, 6), 16);
+    }
 
     return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 };
-
-/**
- * Export individual colors for convenience
- */
-export const {
-    primary,
-    surface,
-    text,
-    border,
-} = colors;
 
 export default colors;
